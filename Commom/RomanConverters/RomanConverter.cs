@@ -20,10 +20,20 @@ namespace Commom.RomanConverters
     public static int Convert(string symbol)
     {
       var accumulator = 0;
+      var symbolLength = symbol.Length;
 
-      foreach (var letter in symbol)
+      for (int i = 0; i < symbolLength; i++)
       {
-        accumulator += romanDictionary[letter];
+
+        var currentValue = romanDictionary[symbol[i]];
+        var nextIndex = i + 1 > symbolLength - 1 ? i : i + 1;
+        var nextValue = romanDictionary[symbol[nextIndex]];
+        var multiplier = 1;
+
+        if (nextValue > currentValue)
+          multiplier = -1;
+
+        accumulator += currentValue * multiplier;
       }
 
       return accumulator;
