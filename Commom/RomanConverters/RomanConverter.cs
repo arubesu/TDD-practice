@@ -17,6 +17,20 @@ namespace Commom.RomanConverters
         {'M', 1000}
       };
 
+    private static string[] forbiddenToRepeat = new string[]{
+        "V",
+        "L",
+        "D"
+      };
+
+    private static Dictionary<char, int> a =
+   new Dictionary<char, int>
+   {
+        {'V', 5},
+        {'L', 50},
+        {'D', 500},
+   };
+
     public static int Convert(string symbol)
     {
       var accumulator = 0;

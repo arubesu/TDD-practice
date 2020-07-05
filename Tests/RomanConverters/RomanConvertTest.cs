@@ -90,6 +90,18 @@ namespace Tests.RomanConverters
       ConvertAndAssertAreEqual(symbol, expected);
     }
 
+    [TestCase("VVV")]
+    [TestCase("VV")]
+    [TestCase("DD")]
+    [TestCase("LL")]
+    [TestCase("XLL")]
+    [TestCase("XVV")]
+    public void ShouldNotReturnNegativeWhenASymbolCannotBeRepeated(string symbol)
+    {
+      var expected = -1;
+      ConvertAndAssertAreEqual(symbol, expected);
+    }
+
     private static void ConvertAndAssertAreEqual(string symbol, int expected)
     {
       var result = RomanConverter.Convert(symbol);
