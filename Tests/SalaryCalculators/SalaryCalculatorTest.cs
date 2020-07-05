@@ -28,7 +28,11 @@ namespace Tests.SalaryCalculators
     [Test]
     public void ShouldGive10PercentDiscountInDeveloperSalaryWhenSalaryIsLessThan3000()
     {
-      Assert.Fail();
+      var developer = new Employee(name: "John Hermiston", salary: 2900m, Role.Developer);
+      var expected = 2610m;
+
+      var result = SalaryCalculator.Calculate(developer);
+      Assert.AreEqual(expected, result);
     }
   }
 }
