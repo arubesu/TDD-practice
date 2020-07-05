@@ -82,6 +82,14 @@ namespace Tests.RomanConverters
       ConvertAndAssertAreEqual(symbol, expected);
     }
 
+    [Test]
+    public void ShouldNotReturnNegativeWhenSymbolRepeatedMoreThanTimesButNotInARowLikeXXXIX()
+    {
+      var symbol = "XXXIX";
+      var expected = 39;
+      ConvertAndAssertAreEqual(symbol, expected);
+    }
+
     private static void ConvertAndAssertAreEqual(string symbol, int expected)
     {
       var result = RomanConverter.Convert(symbol);
