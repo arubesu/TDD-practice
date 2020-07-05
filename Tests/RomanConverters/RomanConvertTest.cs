@@ -58,6 +58,22 @@ namespace Tests.RomanConverters
       ConvertAndAssertAreEqual(symbol, expected);
     }
 
+    [Test]
+    public void ShouldConvertSymbolsWhenMixedLikeXXIV()
+    {
+      var symbol = "XXIV";
+      var expected = 24;
+      ConvertAndAssertAreEqual(symbol, expected);
+    }
+
+    [Test]
+    public void ShouldConvertSymbolsWhenMixedLikeXIX()
+    {
+      var symbol = "XIX";
+      var expected = 19;
+      ConvertAndAssertAreEqual(symbol, expected);
+    }
+
     private static void ConvertAndAssertAreEqual(string symbol, int expected)
     {
       var result = RomanConverter.Convert(symbol);
