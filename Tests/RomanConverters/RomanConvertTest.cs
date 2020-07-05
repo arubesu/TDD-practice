@@ -102,6 +102,27 @@ namespace Tests.RomanConverters
       ConvertAndAssertAreEqual(symbol, expected);
     }
 
+    [TestCase("XIII", 13)]
+    [TestCase("XIV", 14)]
+    [TestCase("XVIII", 18)]
+    [TestCase("XXVI", 26)]
+    [TestCase("XXXXII", -1)]
+    [TestCase("LXI", 61)]
+    [TestCase("DXLV", 545)]
+    [TestCase("CCXVII", 217)]
+    [TestCase("VII", 7)]
+    [TestCase("XXXIV", 34)]
+    [TestCase("XXXVII", 37)]
+    [TestCase("XLIII", 43)]
+    [TestCase("XLVIII", 48)]
+    [TestCase("LII", 52)]
+    [TestCase("CXL", 140)]
+    [TestCase("CXLV", 145)]
+    public void ShouldConvertAllSymbolsBatchTest(string symbol, int expected)
+    {
+      ConvertAndAssertAreEqual(symbol, expected);
+    }
+
     private static void ConvertAndAssertAreEqual(string symbol, int expected)
     {
       var result = RomanConverter.Convert(symbol);
