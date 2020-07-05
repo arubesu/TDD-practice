@@ -1,3 +1,4 @@
+using Common.SalaryCalculators;
 using NUnit.Framework;
 
 namespace Tests.SalaryCalculators
@@ -9,24 +10,25 @@ namespace Tests.SalaryCalculators
     {
     }
 
+    // Discount rule I: 
     // Developers have a 20% discount if their salary is higher than $ 3000.0.
     // Otherwise, the discount is 10%.
 
     [Test]
     public void ShouldGive20PercentDiscountInDeveloperSalaryWhenSalaryIs3000()
     {
+      var developer = new Employee(name: "Fleta Balistreri", salary: 5000m, Role.Developer);
+      var expected = 4000m;
 
-
-      Assert.Fail();
+      var result = SalaryCalculator.Calculate(developer);
+      Assert.AreEqual(expected, result);
     }
 
 
     [Test]
     public void ShouldGive10PercentDiscountInDeveloperSalaryWhenSalaryIsLessThan3000()
     {
-
       Assert.Fail();
     }
-
   }
 }
