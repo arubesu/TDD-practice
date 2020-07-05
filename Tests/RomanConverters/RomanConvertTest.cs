@@ -34,6 +34,15 @@ namespace Tests.RomanConverters
       ConvertAndAssertAreEqual(symbol, expected);
     }
 
+    [Test]
+    public void ShouldConvertSymbolFourLettersLikeXXII()
+    {
+      var symbol = "XXII";
+      var expected = 22;
+      ConvertAndAssertAreEqual(symbol, expected);
+    }
+
+
     private static void ConvertAndAssertAreEqual(string symbol, int expected)
     {
       var result = RomanConverter.Convert(symbol);
