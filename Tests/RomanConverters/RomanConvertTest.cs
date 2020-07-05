@@ -50,6 +50,14 @@ namespace Tests.RomanConverters
       ConvertAndAssertAreEqual(symbol, expected);
     }
 
+    [Test]
+    public void ShouldConvertSymbolWhenALowerValueSymbolIsFollowedByABiggerValueSymbolLikeIV()
+    {
+      var symbol = "IV";
+      var expected = 4;
+      ConvertAndAssertAreEqual(symbol, expected);
+    }
+
     private static void ConvertAndAssertAreEqual(string symbol, int expected)
     {
       var result = RomanConverter.Convert(symbol);
