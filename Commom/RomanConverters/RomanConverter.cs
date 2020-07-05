@@ -1,9 +1,12 @@
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Commom.RomanConverters
 {
   public static class RomanConverter
   {
+
+    const int InvalidInputResult = -1;
 
     private static Dictionary<char, int> romanDictionary =
       new Dictionary<char, int>
@@ -17,10 +20,10 @@ namespace Commom.RomanConverters
         {'M', 1000}
       };
 
-    private static string[] forbiddenToRepeat = new string[]{
-        "V",
-        "L",
-        "D"
+    private static char[] forbiddenToRepeat = new char[]{
+        'V',
+        'L',
+        'D'
       };
 
     private static Dictionary<char, int> a =
@@ -33,6 +36,9 @@ namespace Commom.RomanConverters
 
     public static int Convert(string symbol)
     {
+      if (HasForbiddenRepetition(symbol))
+        return InvalidInputResult;
+
       var accumulator = 0;
       var symbolLength = symbol.Length;
       var lastValue = 0;
@@ -55,7 +61,7 @@ namespace Commom.RomanConverters
         }
 
         if (countRepeatedChar > 3)
-          return -1;
+          return InvalidInputResult;
 
         if (nextValue > currentValue)
           multiplier = -1;
@@ -67,5 +73,15 @@ namespace Commom.RomanConverters
 
       return accumulator;
     }
+
+    private static bool HasForbiddenRepetition(string symbol)
+    {
+      return symbol
+      .GroupBy(letter => letter)
+      .Where(group => group.Count() > 1)
+      .Select(group => group.Key)
+      .Any(letter => forbiddenToRepeat.Contains(letter));
+    }
   }
+
 }
