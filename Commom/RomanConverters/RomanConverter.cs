@@ -5,7 +5,7 @@ namespace Commom.RomanConverters
 
     public static int Convert(string symbol)
     {
-      return 0;
+      return 1;
     }
   }
 }
