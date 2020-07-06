@@ -10,23 +10,25 @@ namespace Tests.SalaryCalculators
     {
     }
 
-    [Test]
-    public void ShouldGive20PercentDiscountWhenSalaryIsHigherThanLimit()
+    [TestCase(5000, Role.Developer, 4000)]
+    [TestCase(5000, Role.DBA, 3750)]
+    [TestCase(5000, Role.Tester, 3750)]
+    public void ShouldGiveDiscountByRoleWhenSalaryIsHigherThanLimit(decimal salary, Role role, decimal expected)
     {
-      var developer = new Employee(name: "Fleta Balistreri", salary: 5000m, Role.Developer);
-      var expected = 4000m;
+      var employee = new Employee(name: "Fleta Balistreri", salary, role);
 
-      var result = SalaryCalculator.Calculate(developer);
+      var result = SalaryCalculator.Calculate(employee);
       Assert.AreEqual(expected, result);
     }
 
-    [Test]
-    public void ShouldGive10PercentDiscountInDeveloperSalaryWhenSalaryIsLessThanLimit()
+    [TestCase(3000, Role.Developer, 2700)]
+    [TestCase(3000, Role.DBA, 2550)]
+    [TestCase(3000, Role.Tester, 2550)]
+    public void ShouldGiveDiscountInSalaryWhenSalaryIsLessThanLimit(decimal salary, Role role, decimal expected)
     {
-      var developer = new Employee(name: "John Hermiston", salary: 2900m, Role.Developer);
-      var expected = 2610m;
+      var employee = new Employee(name: "John Hermiston", salary, role);
 
-      var result = SalaryCalculator.Calculate(developer);
+      var result = SalaryCalculator.Calculate(employee);
       Assert.AreEqual(expected, result);
     }
   }
