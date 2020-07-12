@@ -9,12 +9,8 @@ namespace Common.SalaryCalculators
     //DBAs and Testers have 25% discount if their salary is higher than $ 2500.
     //Otherwise, the discount is 15%.
 
-    public static decimal Calculate(Employee employee)
-    {
-      if (employee.Salary > 3000)
-        return employee.Salary * 0.8m;
+    public static decimal Calculate(Employee employee) =>
+       employee.Role.Rule.Calculate(employee);
 
-      return employee.Salary * 0.9m;
-    }
   }
 }
