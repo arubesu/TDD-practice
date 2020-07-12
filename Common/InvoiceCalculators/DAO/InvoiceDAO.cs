@@ -2,7 +2,7 @@ namespace Common.InvoiceCalculators.DAO
 {
   public class InvoiceDAO
   {
-    public void Persist(Invoice invoice)
+    public virtual void Persist(Invoice invoice)
     {
       //No Implementation;
     }
