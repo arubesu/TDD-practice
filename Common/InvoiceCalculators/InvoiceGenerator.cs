@@ -9,7 +9,7 @@ namespace Common.InvoiceCalculators
     {
       var invoice = new Invoice(order.Customer, order.TotalValue * 0.94m, DateTime.Now);
 
-      InvoiceDAO.Persist(invoice);
+      new InvoiceDAO().Persist(invoice);
 
       return invoice;
     }

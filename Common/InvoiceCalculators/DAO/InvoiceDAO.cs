@@ -1,8 +1,8 @@
 namespace Common.InvoiceCalculators.DAO
 {
-  public static class InvoiceDAO
+  public class InvoiceDAO
   {
-    public static void Persist(Invoice invoice)
+    public void Persist(Invoice invoice)
     {
       //No Implementation;
     }
