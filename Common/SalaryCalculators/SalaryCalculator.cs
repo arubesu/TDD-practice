@@ -11,6 +11,5 @@ namespace Common.SalaryCalculators
 
     public static decimal Calculate(Employee employee) =>
        employee.Role.Rule.Calculate(employee);
-
   }
 }
