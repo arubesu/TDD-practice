@@ -1,8 +1,8 @@
 namespace Common.InvoiceCalculators.DAO
 {
-  public class InvoiceDAO
+  public class InvoiceDAO : IActionAfterGenerateInvoice
   {
-    public virtual void Persist(Invoice invoice)
+    public virtual void Execute(Invoice invoice)
     {
       //No Implementation;
     }

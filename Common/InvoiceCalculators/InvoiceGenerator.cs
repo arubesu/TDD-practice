@@ -1,26 +1,25 @@
 using System;
-using Common.InvoiceCalculators.DAO;
-using Common.InvoiceCalculators.Services;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Common.InvoiceCalculators
 {
   public class InvoiceGenerator
   {
-    private InvoiceDAO invoiceDAO;
-    private SAPService sapService;
+    private const decimal DiscountFactor = 0.94m;
+    private IList<IActionAfterGenerateInvoice> actions;
 
-    public InvoiceGenerator(InvoiceDAO invoiceDAO, SAPService sapService)
+    public InvoiceGenerator(IList<IActionAfterGenerateInvoice> actions)
     {
-      this.invoiceDAO = invoiceDAO;
-      this.sapService = sapService;
+      this.actions = actions;
     }
 
     public Invoice Generate(Order order)
     {
-      var invoice = new Invoice(order.Customer, order.TotalValue * 0.94m, DateTime.Now);
+      var invoice = new Invoice(order.Customer, order.TotalValue * DiscountFactor, DateTime.Now);
 
-      invoiceDAO.Persist(invoice);
-      sapService.Send(invoice);
+      foreach (var action in actions)
+        action.Execute(invoice);
 
       return invoice;
     }

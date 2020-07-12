@@ -1,8 +1,8 @@
 namespace Common.InvoiceCalculators.Services
 {
-  public class SAPService
+  public class SAPService : IActionAfterGenerateInvoice
   {
-    public virtual void Send(Invoice invoice)
+    public virtual void Execute(Invoice invoice)
     {
       //No Implementation
     }
