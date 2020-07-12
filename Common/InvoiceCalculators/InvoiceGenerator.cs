@@ -1,4 +1,5 @@
 using System;
+using Common.InvoiceCalculators.DAO;
 
 namespace Common.InvoiceCalculators
 {
@@ -6,7 +7,11 @@ namespace Common.InvoiceCalculators
   {
     public Invoice Generate(Order order)
     {
-      return new Invoice(order.Customer, order.TotalValue * 0.94m, DateTime.Now);
+      var invoice = new Invoice(order.Customer, order.TotalValue * 0.94m, DateTime.Now);
+
+      InvoiceDAO.Persist(invoice);
+
+      return invoice;
     }
   }
 }
