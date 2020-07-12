@@ -6,7 +6,7 @@ namespace Common.InvoiceCalculators
   {
     public Invoice Generate(Order order)
     {
-      throw new NotImplementedException();
+      return new Invoice(order.Customer, order.TotalValue * 0.94m, DateTime.Now);
     }
   }
 }
